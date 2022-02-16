@@ -23,17 +23,17 @@
         <main class="hidden"></main>
         
 
-        <main class="screen-3_1 hidden">
+        <main class="screen-3_1">
             <div class="title">
                 <h2>Começe pelo Começo</h2>
             </div>
             <ul class="quizz-base-info">
-                <input type="text" placeholder="Titulo do seu quizz" name="Titulo do seu quizz" id="">
-                <input type="text" placeholder="URL da imagem do seu quizz" name="" id="">
-                <input type="text" placeholder="Quantidade de perguntas do quizz" name="" id="">
-                <input type="text" placeholder="Quantidades de níveis do quizz" name="" id="">
+                <input type="text" placeholder="Titulo do seu quizz" name="QuizzTitle" id="QuizzTitleInput">
+                <input type="text" placeholder="URL da imagem do seu quizz" name="QuizzImageCoverURL" id="QuizzImageCoverURLInput">
+                <input type="text" placeholder="Quantidade de perguntas do quizz" name="QuizzQuestionQtd" id="QuizzQuestionQtdInput">
+                <input type="text" placeholder="Quantidades de níveis do quizz" name="QuizzLevelsQtd" id="QuizzLevelsQtdInput">
             </ul>
-            <button class="red-button">
+            <button class="red-button" onclick="getBaseQuizzInfo()">
                 <p>Prosseguir para criar perguntas</p>
             </button>
         </main>
