@@ -1,6 +1,6 @@
 :root{
     --main-color: #EC362D;
-    --main-background-color: #E5E5E5
+    --background-color: #E5E5E5
 }
 
 *{
@@ -8,13 +8,21 @@
 }
 
 body{
-    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+}
+
+::placeholder{
+    color: #BABABA;
+    font-style: italic;
+    font-size: 19px;
+    font-weight: 400;
 }
 
 .content-container {
     width: 100vw;
     display: flex;
     justify-content: center;
+    height: 100vh;
 }
 
 header{
@@ -39,5 +47,69 @@ main{
     height: 300px;
     width: calc(100vw - 30px);
     margin-top: 69px;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.screen-3_1{
+    height: calc(100vh - 69px);
     background-color: var(--background-color);
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 89px;
+    width: 100vw;
+    background-color: var(--background-color);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.quizz-base-info{
+    background-color: #FFF;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quizz-base-info :first-child{
+    margin-top: 21px;
+}
+
+.quizz-base-info :last-child{
+    margin-bottom: 24px;
+}
+
+.quizz-base-info input{
+    margin-bottom: 9px;
+    width: calc(100vw - 30px);
+    height: 46px;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+}
+
+.red-button{
+    width: calc(100vw - 30px);
+    height: 54px;
+    border-radius: 15px;
+    background-color: var(--main-color);
+    margin-top: 29px;
+
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 400;
+
+    border: none;
+    
+}
+
+/*----Utilitarios----*/
+.hidden {
+    display: none;
 }

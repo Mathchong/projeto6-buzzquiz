@@ -6,8 +6,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
-    rel="stylesheet">
-    
+        rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,13 +20,24 @@
         <h1>BuzzQuizz</h1>
     </header>
     <div class="content-container">
-        <main>
+        <main class="hidden"></main>
+        
 
+        <main class="screen-3_1 hidden">
+            <div class="title">
+                <h2>Começe pelo Começo</h2>
+            </div>
+            <ul class="quizz-base-info">
+                <input type="text" placeholder="Titulo do seu quizz" name="Titulo do seu quizz" id="">
+                <input type="text" placeholder="URL da imagem do seu quizz" name="" id="">
+                <input type="text" placeholder="Quantidade de perguntas do quizz" name="" id="">
+                <input type="text" placeholder="Quantidades de níveis do quizz" name="" id="">
+            </ul>
+            <button class="red-button">
+                <p>Prosseguir para criar perguntas</p>
+            </button>
         </main>
-
     </div>
-
-
 
     <script src="./script/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
