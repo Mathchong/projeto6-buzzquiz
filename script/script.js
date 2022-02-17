@@ -29,15 +29,10 @@ function getBaseQuizzInfo() {
     let QuizzImageCoverURL = document.querySelector('#QuizzImageCoverURLInput').value
     let QuizzQuestionQtd = document.querySelector('#QuizzQuestionQtdInput').value
     let QuizzLevelsQtd = document.querySelector('#QuizzLevelsQtdInput').value
-    console.log(QuizzTitle)
-    console.log(QuizzImageCoverURL)
-    console.log(QuizzQuestionQtd)
-    console.log(QuizzLevelsQtd)
 
     if (!stringSize(QuizzTitle, 20, 65)) return alert("Por favor preencha as informações corretamente");
     if (!isImage(QuizzImageCoverURL)) return alert("Por favor preencha as informações corretamente");
     if (!numberRange(QuizzQuestionQtd, 3, null)) return alert("Por favor preencha as informações corretamente");
     if (!numberRange(QuizzLevelsQtd, 2, null)) return alert("Por favor preencha as informações corretamente");
-    console.log('Deu certoooo')
     return true;
 }
