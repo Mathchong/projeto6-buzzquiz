@@ -1,63 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <link rel="stylesheet" href="./style/reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-    <link rel="stylesheet" href="./style/reset.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
     <title>Buzz Quizz</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>BuzzQuizz</h1>
+      <h1>BuzzQuizz</h1>
     </header>
+    <!--Tela 1 com botão para ir para a tela 3-->
+    <div class="screen-1-desktop">
+      <div class="create-quizz">
+        <p>Você ainda não criou nenhum quizz :(</p>
+        <button onclick="renderQuizzCreationScreen()">Criar Quizz</button>
+      </div>
+      <div class="user-quizzes hidden">
+        <div class="add-quizz">
+          <h1>Seus Quizzes</h1>
+          <ion-icon
+            name="add-circle-outline"
+            onclick="renderQuizzCreationScreen()"
+          ></ion-icon>
+        </div>
+        <ul class="quizzes-list"></ul>
+      </div>
+      <div class="all-the-quizzes">
+        <h1>Todos os Quizzes</h1>
+        <ul class="quizzes-list"></ul>
+      </div>
+    </div>
+    <div class="screen-2-quizzes hidden"></div>
+    <!--Tela3-->
     <div class="content-container">
-        <main class="hidden"></main>
-        
+      <main class="hidden"></main>
 
-        <main class="screen-3_1">
-            <div class="title">
-                <h2>Começe pelo Começo</h2>
-            </div>
-            <ul class="quizz-base-info">
-                <input type="text" placeholder="Titulo do seu quizz" name="QuizzTitle" id="QuizzTitleInput">
-                <input type="text" placeholder="URL da imagem do seu quizz" name="QuizzImageCoverURL" id="QuizzImageCoverURLInput">
-                <input type="text" placeholder="Quantidade de perguntas do quizz" name="QuizzQuestionQtd" id="QuizzQuestionQtdInput">
-                <input type="text" placeholder="Quantidades de níveis do quizz" name="QuizzLevelsQtd" id="QuizzLevelsQtdInput">
-            </ul>
-            <button class="red-button" onclick="getBaseQuizzInfo()">
-                <p>Prosseguir para criar perguntas</p>
-            </button>
-        </main>
-
-        <main class="screen3_2 hidden">
-            <div class="title">
-                <h2>Crie suas perguntas</h2>
-            </div>
-            <section class="question">
-                <div></div>
-                <div>
-                    
-                </div>
-
-            </section>
-
-
-        </main>
+      <main class="screen-3_1 hidden">
+        <div class="title">
+          <h2>Começe pelo Começo</h2>
+        </div>
+        <ul class="quizz-base-info">
+          <input
+            type="text"
+            placeholder="Titulo do seu quizz"
+            name="QuizzTitle"
+            id="QuizzTitleInput"
+          />
+          <input
+            type="text"
+            placeholder="URL da imagem do seu quizz"
+            name="QuizzImageCoverURL"
+            id="QuizzImageCoverURLInput"
+          />
+          <input
+            type="text"
+            placeholder="Quantidade de perguntas do quizz"
+            name="QuizzQuestionQtd"
+            id="QuizzQuestionQtdInput"
+          />
+          <input
+            type="text"
+            placeholder="Quantidades de níveis do quizz"
+            name="QuizzLevelsQtd"
+            id="QuizzLevelsQtdInput"
+          />
+        </ul>
+        <button class="red-button" onclick="getBaseQuizzInfo()">
+          <p>Prosseguir para criar perguntas</p>
+        </button>
+      </main>
     </div>
 
     <script src="./script/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
-
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
 </html>
