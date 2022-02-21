@@ -4,78 +4,85 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="./style/reset.css" />
 <link rel="stylesheet" href="./style/style.css" />
+<link rel="stylesheet" href="./style/media.css" />
 <title>BuzzQuizz</title>
-</head>
-
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="./style/style.css" />
-<title>Buzz Quizz</title>
 </head>
 
 <body>
   <header>
-    <h1>BuzzQuizz</h1>
+    <p onclick="(windowReaload())">BuzzQuizz</p>
   </header>
-  <!--Tela 1 com botão para ir para a tela 3-->
-  <div class="screen-1-desktop hidden">
-    <div class="create-quizz">
-      <p>Você ainda não criou nenhum quizz :(</p>
-      <button onclick="renderQuizzCreationScreen()">Criar Quizz</button>
+
+  <div class="banner hidden"></div>
+
+  <main>
+    <div class="loading hidden">
+      <img src="imgs/Spinner-1s-200px .gif" alt="loading">
+      <p>Carregando</p>
     </div>
-    <div class="user-quizzes">
-      <div class="add-quizz">
-        <h1>Seus Quizzes</h1>
-        <ion-icon name="add-circle-outline" onclick="renderQuizzCreationScreen()"></ion-icon>
+    <!-- Tela 1 -->
+    <section class="screen_1_Desktop">
+      <div class="create-quizzes">
+        <p>Você não criou nenhum quizz ainda :(</p>
+        <button data-identifier="create-quizz" onclick="renderScreen3()">Criar Quizz</button>
       </div>
-      <ul class="quizzes-list"></ul>
-    </div>
-    <div class="all-the-quizzes">
-      <h1>Todos os Quizzes</h1>
-      <ul class="quizzes-list"></ul>
-    </div>
-  </div>
-  <div class="screen-2-quizzes hidden"></div>
-  <!--Tela3-->
-  <div class="quizz-creation content-container hidden">
-    <main class="screen-3_1">
-      <div class="title">
-        <h2>Começe pelo Começo</h2>
+
+      <div data-identifier="user-quizzes" class="created-quizzes hidden">
+        <div>
+          <h1>Seus Quizzes</h1>
+          <ion-icon data-identifier="create-quizz" name="add-circle" onclick="renderScreen3()"></ion-icon>
+        </div>
+        <div class="quizzes-created"></div>
       </div>
-      <ul class="quizz-base-info">
-        <input type="text" placeholder="Titulo do seu quizz" name="QuizzTitle" id="QuizzTitleInput" />
-        <input type="text" placeholder="URL da imagem do seu quizz" name="QuizzImageCoverURL"
-          id="QuizzImageCoverURLInput" />
-        <input type="text" placeholder="Quantidade de perguntas do quizz" name="QuizzQuestionQtd"
-          id="QuizzQuestionQtdInput" />
-        <input type="text" placeholder="Quantidades de níveis do quizz" name="QuizzLevelsQtd"
-          id="QuizzLevelsQtdInput" />
-      </ul>
-      <button class="red-button" onclick="getBaseQuizzInfo()">
-        <p>Prosseguir para criar perguntas</p>
+
+      <h4>Todos os Quizzes</h4>
+
+      <div data-identifier="general-quizzes" class="quizzes"></div>
+    </section>
+
+    <!-- Screen 2 -->
+    <section class="screen_2 hidden"></section>
+    <!--Tela3-->
+    <div class="content-container hidden">
+
+      <main class="screen-3_1 hidden">
+        <div class="title">
+          <h2>Começe pelo Começo</h2>
+        </div>
+        <ul class="quizz-base-info">
+          <input type="text" placeholder="Titulo do seu quizz" name="QuizzTitle" id="QuizzTitleInput" />
+          <input type="text" placeholder="URL da imagem do seu quizz" name="QuizzImageCoverURL"
+            id="QuizzImageCoverURLInput" />
+          <input type="text" placeholder="Quantidade de perguntas do quizz" name="QuizzQuestionQtd"
+            id="QuizzQuestionQtdInput" />
+          <input type="text" placeholder="Quantidades de níveis do quizz" name="QuizzLevelsQtd"
+            id="QuizzLevelsQtdInput" />
+        </ul>
+        <button class="red-button" onclick="getBaseQuizzInfo()">
+          <p>Prosseguir para criar perguntas</p>
+        </button>
+      </main>
+    </div>
+
+    <div class="question-creation content-container hidden">
+      <div Class="title">
+        <h2>Crie Suas Perguntas</h2>
+      </div>
+      <div class="all-question-container">
+        <!--Will be loaded by JS-->
+      </div>
+      <button class="red-button" onclick="verifyLevelsInfo()">
+        <p>Prosseguir pra criar níveis</p>
       </button>
-    </main>
-  </div>
-
-  <div class="question-creation content-container hidden">
-    <div Class="title">
-      <h2>Crie Suas Perguntas</h2>
     </div>
-    <div class="all-question-container">
-      <!--Will be loaded by JS-->
-    </div>
-    <button class="red-button" onclick="verifyLevelsInfo()">
-      <p>Prosseguir pra criar níveis</p>
-    </button>
-  </div>
 
-  <script src="./script/script.js"></script>
-  <script src="./script/create-quizz.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="./script/script.js"></script>
+    <script src="./script/create-quizz.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

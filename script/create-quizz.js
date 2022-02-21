@@ -22,7 +22,7 @@ let questionHTML = `<div class="question-info-container">
 </div>
 </div>`
 
-//const BUZZ_QUIZZ_API = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes'
+BUZZ_QUIZZ_API = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes'
 
 function stringSize(string, min, max) {
   if (string === null) return false
@@ -43,14 +43,8 @@ function numberRange(number, min, max) {
   return true
 }
 
-function isHexColor(string) {
-  let colorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/
-  if (colorRegex.test(string)) return true
-  return false
-}
-
 function isImage(ImageURL) {
-  let regex = /apng|avif|gif|jpeg|jpg|png|svg|webp|bmp|ico|tiff/i
+  let regex = /apng|avif|gif|jpeg|jpg|png|svg|webp|bmp|ico|tiff/
   if (regex.test(ImageURL)) return true
   return false
 }
@@ -69,9 +63,9 @@ function getBaseQuizzInfo() {
     return alert('Por favor preencha as informações corretamente')
   if (!numberRange(QuizzQuestionQtd, 3, null))
     return alert('Por favor preencha as informações corretamente')
-  if (!numberRange(QuizzLevelsQtd, 2, null)) {
+  if (!numberRange(QuizzLevelsQtd, 2, null))
     return alert('Por favor preencha as informações corretamente')
-  }
+  
   questionNumber = QuizzQuestionQtd
   renderQuestionCreation(QuizzQuestionQtd)
 
@@ -86,13 +80,13 @@ function getBaseQuizzInfo() {
 
 function renderQuestionCreation(QuizzQuestionQtd) {
   QuizzQuestionQtd = parseInt(QuizzQuestionQtd)
-  let questionPlace = document.querySelector(".all-question-container")
-  questionPlace.innerHTML = ""
-  let aux = ""
+  let questionPlace = document.querySelector('.all-question-container')
+  questionPlace.innerHTML = ''
+  let aux = ''
   for (let i = 1; i <= QuizzQuestionQtd; i++) {
     aux = questionHTML
-    aux = aux.replace("QuestionNumber", i.toString())
-    questionPlace.innerHTML += aux;
+    aux = aux.replace('QuestionNumber', i.toString())
+    questionPlace.innerHTML += aux
   }
 }
 
