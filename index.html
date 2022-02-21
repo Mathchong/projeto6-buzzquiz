@@ -4,49 +4,47 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/reset.css" />
     <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/media.css" />
     <title>BuzzQuizz</title>
   </head>
-
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./style/style.css" />
-  <title>Buzz Quizz</title>
-</head>
-
 <body>
-  <header>
-    <h1>BuzzQuizz</h1>
-  </header>
-  <!--Tela 1 com botão para ir para a tela 3-->
-  <div class="screen-1-desktop">
-    <div class="create-quizz">
-      <p>Você ainda não criou nenhum quizz :(</p>
-      <button onclick="renderQuizzCreationScreen()">Criar Quizz</button>
-    </div>
-    <div class="user-quizzes">
-      <div class="add-quizz">
-        <h1>Seus Quizzes</h1>
-        <ion-icon name="add-circle-outline" onclick="renderQuizzCreationScreen()"></ion-icon>
-      </div>
-      <ul class="quizzes-list"></ul>
-    </div>
-    <div class="all-the-quizzes">
-      <h1>Todos os Quizzes</h1>
-      <ul class="quizzes-list"></ul>
-    </div>
+  <header><p onclick="(windowReaload())">BuzzQuizz</p></header>
+
+  <div class="banner hidden"></div>
+
+  <main>
+    <div class="loading hidden">
+      <img src="imgs/Spinner-1s-200px .gif" alt="loading">
+      <p>Carregando</p>
   </div>
-  <div class="screen-2-quizzes hidden"></div>
+      <!-- Tela 1 -->
+   <section class="screen_1_Desktop">
+    <div class="create-quizzes">
+        <p>Você não criou nenhum quizz ainda :(</p>
+        <button data-identifier="create-quizz" onclick="renderScreen3()">Criar Quizz</button>
+    </div>
+
+    <div data-identifier="user-quizzes" class="created-quizzes hidden">
+        <div>
+            <h1>Seus Quizzes</h1>
+            <ion-icon data-identifier="create-quizz" name="add-circle" onclick="renderScreen3()"></ion-icon>
+        </div>
+        <div class="quizzes-created"></div>
+    </div>
+
+    <h4>Todos os Quizzes</h4>
+
+    <div data-identifier="general-quizzes" class="quizzes"></div>
+</section>
+
+  <!-- Screen 2 -->
+  <section class="screen_2 hidden"></section>
   <!--Tela3-->
-<<<<<<< HEAD
   <div class="content-container hidden">
 
     <main class="screen-3_1 hidden">
-=======
-  <div class="quizz-creation content-container hidden">
-    <main class="screen-3_1">
->>>>>>> e3e2b32665efda3ba42894cba59ae8860c18a48a
       <div class="title">
         <h2>Começe pelo Começo</h2>
       </div>
@@ -92,6 +90,7 @@
         </div>
       </div>
     </div>
+    
 
   </div>
 
