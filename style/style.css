@@ -166,8 +166,21 @@ main {
   z-index: 3;
 }
 
-.meu-quizz {
+.my-quizz {
   position: relative;
+}
+
+.screen-1-desktop {
+  width: 100%;
+}
+/*Screen 2*/
+.screen-2-quizzes {
+  margin-top: 69px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
+  align-items: center;
 }
 
 /*Screen 3 */

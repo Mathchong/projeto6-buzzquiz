@@ -11,7 +11,7 @@ let quizzCriado = {
   levels: []
 }
 
-function verificarSeExisteDataStorage() {
+function verifyIfExistDataStorage() {
   if (
     JSON.parse(window.localStorage.getItem('User Quizzes')) === null ||
     JSON.parse(window.localStorage.getItem('User Quizzes')).length === 0
@@ -136,7 +136,7 @@ function requestSelectedQuizz(id) {
   ocultar.classList.add('hidden')
   document.querySelector('.loading-geral').classList.remove('')
   const solicitacao = axios.get(
-    `https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`
+    'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/ID_DO_QUIZZ'
   )
   solicitacao.then(renderSelectedQuizz)
 }
@@ -154,4 +154,4 @@ function renderSelectedQuizz(respostaComQuizz) {
   renderQuestions()
   setTimeout(scrollToNextQuestion, 1000)
 }
-//Criar o render quitzz title, questions e scroll// 
+//Criar o render quitzz title, questions e scroll//
