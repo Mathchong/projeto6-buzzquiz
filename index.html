@@ -25,7 +25,7 @@
       <p>Você ainda não criou nenhum quizz :(</p>
       <button onclick="renderQuizzCreationScreen()">Criar Quizz</button>
     </div>
-    <div class="user-quizzes hidden">
+    <div class="user-quizzes">
       <div class="add-quizz">
         <h1>Seus Quizzes</h1>
         <ion-icon name="add-circle-outline" onclick="renderQuizzCreationScreen()"></ion-icon>
@@ -39,9 +39,14 @@
   </div>
   <div class="screen-2-quizzes hidden"></div>
   <!--Tela3-->
+<<<<<<< HEAD
   <div class="content-container hidden">
 
     <main class="screen-3_1 hidden">
+=======
+  <div class="quizz-creation content-container hidden">
+    <main class="screen-3_1">
+>>>>>>> e3e2b32665efda3ba42894cba59ae8860c18a48a
       <div class="title">
         <h2>Começe pelo Começo</h2>
       </div>
@@ -60,37 +65,34 @@
     </main>
   </div>
 
-  <div class="question-creation content-container">
+  <div class="question-creation content-container hidden">
     <div Class="title">
       <h2>Crie Suas Perguntas</h2>
     </div>
     <div class="all-question-container">
-      <div class="question-info-container">
-        <div class="area">
-          <div class="question-number">
-            <h2>Pergunta 1</h2>
-            <ion-icon name="create-outline"></ion-icon>
-          </div>
-          <div class="question-form">
-            <input class="input1" type="text" placeholder="Texto da Pergunta" name="Pergunta">
-            <input class="input-url" type="text" placeholder="Cor de Fundo da Pergunta" name="Pergunta">
-            <h2>Resposta Correta</h2>
-            <input class="input1" type="text" placeholder="Resposta Correta" name="Pergunta">
-            <input class="input-url" type="text" placeholder="URL da Imagem" name="Pergunta">
-            <h2>Respostas Incorretas</h2>
-            <input class="input1" type="text" placeholder="Resposta Incorreta1" name="Pergunta">
-            <input class="input-url" type="text" placeholder="URL da Imagem1" name="Pergunta">
-            <input class="input1" type="text" placeholder="Resposta Incorreta2" name="Pergunta">
-            <input class="input-url" type="text" placeholder="URL da Imagem2" name="Pergunta">
-            <input class="input1" type="text" placeholder="Resposta Incorreta3" name="Pergunta">
-            <input class="input-url" type="text" placeholder="URL da Imagem3" name="Pergunta">
-          </div>
-        </div>
-      </div>
+      <!--Will be loaded by JS-->
     </div>
     <button class="red-button" onclick="createLevels()">
       <p>Prosseguir pra criar níveis</p>
     </button>
+  </div>
+
+  <div class="level-creation content-container hidden">
+    <div class="area">
+      <div class="title">
+        <h2>Agora, decida os níveis!</h2>
+      </div>
+      <div class="all-levels-container">
+        <div>
+          <h2>Nível 1</h2>
+        </div>
+        
+        <div class="level-form">
+
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script src="./script/script.js"></script>

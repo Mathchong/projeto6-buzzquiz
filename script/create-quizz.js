@@ -42,8 +42,14 @@ function numberRange(number, min, max) {
   return true
 }
 
+function isHexColor(string) {
+  let colorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/
+  if (colorRegex.test(string)) return true
+  return false
+}
+
 function isImage(ImageURL) {
-  let regex = /apng|avif|gif|jpeg|jpg|png|svg|webp|bmp|ico|tiff/
+  let regex = /apng|avif|gif|jpeg|jpg|png|svg|webp|bmp|ico|tiff/i
   if (regex.test(ImageURL)) return true
   return false
 }
@@ -62,26 +68,68 @@ function getBaseQuizzInfo() {
     return alert('Por favor preencha as informações corretamente')
   if (!numberRange(QuizzQuestionQtd, 3, null))
     return alert('Por favor preencha as informações corretamente')
-  if (!numberRange(QuizzLevelsQtd, 2, null))
+  if (!numberRange(QuizzLevelsQtd, 2, null)) {
     return alert('Por favor preencha as informações corretamente')
-  return true
+  }
+
+  renderQuestionCreation(QuizzQuestionQtd)
+
+  let quizzCreationScreen = document.querySelector('.quizz-creation')
+  let questionCreation = document.querySelector('.question-creation')
+
+  quizzCreationScreen.classList.add('hidden')
+  questionCreation.classList.remove('hidden')
+
+  return true;
 }
 
 function renderQuestionCreation(QuizzQuestionQtd) {
   QuizzQuestionQtd = parseInt(QuizzQuestionQtd)
-  let questionPlace = document.querySelector('.all-question-container')
-  questionPlace.innerHTML = ''
-  let aux = ''
+  let questionPlace = document.querySelector(".all-question-container")
+  questionPlace.innerHTML = ""
+  let aux = ""
   for (let i = 1; i <= QuizzQuestionQtd; i++) {
     aux = questionHTML
-    aux = aux.replace('QuestionNumber', i.toString())
-    questionPlace.innerHTML += aux
+    aux = aux.replace("QuestionNumber", i.toString())
+    questionPlace.innerHTML += aux;
   }
 }
 
-function createLevels() {
+function verifyLevelsInfo(QuizzQuestionQtd) {
   let questionText = document.querySelectorAll('#questionText')
-  let questionColor = document.querySelectorAll('#questionColor')
-  let correctAnswer = document.querySelectorAll('#correctAnswer')
-  let answerImageURL = document.querySelectorAll('#answerImageURL')
+  let questionColor = document.querySelectorAll("#questionColor")
+  let correctAnswer = document.querySelectorAll("#correctAnswer")
+  let wrongAnswer1 = document.querySelectorAll("#wrongAnswer1")
+  let wrongAnswer2 = document.querySelectorAll("#wrongAnswer2-3")
+  let answerImageURL = document.querySelectorAll("#answerImageURL")
+
+  console.log(questionText);
+  console.log(questionColor);
+  console.log(correctAnswer);
+  console.log(wrongAnswer1);
+  console.log(wrongAnswer2);
+  console.log(answerImageURL);
+
+  let indexWrongAnswer = 0;
+  let indexUrl = 0;
+
+  for (let i = 0; i < QuizzQuestionQtd; i++) {
+
+    if (!stringSize(questionText[i].value, 20, 100)) return alert('Por favor preencha as informações corretamente')
+    if (!isHexColor(questionColor[i].value)) return alert('Por favor preencha as informações corretamente')
+    if (correctAnswer[i].value === null || correctAnswer[i] === "") return alert('Por favor preencha as informações corretamente')
+    if (!isImage(answerImageURL[indexUrl].value)) return alert('Por favor preencha as informações corretamente')
+    indexUrl += 1
+    if (wrongAnswer1[i].value === null || wrongAnswer1[i].value === "") return alert('Por favor preencha as informações corretamente')
+    if (!isImage(answerImageURL[indexUrl].value)) return alert('Por favor preencha as informações corretamente')
+    indexUrl += 1
+    if (wrongAnswer2[indexWrongAnswer].value == null || wrongAnswer2[indexWrongAnswer].value == "") { }
+    else if (!isImage(answerImageURL[indexUrl].value)) return alert('Por favor preencha as informações corretamente')
+    indexUrl += 1
+    indexWrongAnswer += 1
+    if (wrongAnswer2[indexWrongAnswer].value == null || wrongAnswer2[indexWrongAnswer].value == "") { }
+    else if (!isImage(answerImageURL[indexUrl].value)) return alert('Por favor preencha as informações corretamente')
+    indexWrongAnswer += 1
+    indexUrl += 1
+  }
 }

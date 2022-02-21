@@ -1,6 +1,6 @@
 let arrayListaQuizzes = []
 let arrayDeQuizzes = []
-//verifyIfExistDataStorage()
+verifyIfExistDataStorage()
 let quantidadeDePerguntas
 let quizzEmQuestao
 let quantidadeDeNiveis
@@ -108,4 +108,6 @@ function renderSelectedQuizz(respostaComQuizz) {
   renderQuestions()
   setTimeout(scrollToNextQuestion, 1000)
 }
+
 //Criar o render quitzz title, questions e scroll//
+
