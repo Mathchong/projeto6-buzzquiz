@@ -26,8 +26,6 @@ body {
   align-items: center;
 }
 
-
-
 .loading-geral {
   margin-top: 100px;
   width: 100%;
@@ -235,8 +233,7 @@ header h1 {
   margin-top: 28px;
   font-size: 20px;
   font-weight: 700;
-
-}
+} 
 
 .question-number{
   display: flex;

@@ -1,6 +1,6 @@
 let arrayListaQuizzes = []
 let arrayDeQuizzes = []
-//verifyIfExistDataStorage()
+verifyIfExistDataStorage()
 let quantidadeDePerguntas
 let quizzEmQuestao
 let quantidadeDeNiveis
@@ -18,18 +18,18 @@ let questionHTML = `<div class="question-info-container">
     <ion-icon name="create-outline"></ion-icon>
   </div>
   <div class="question-form">
-    <input class="input1" type="text" placeholder="Texto da Pergunta" name="Pergunta" id="#questionText">
-    <input class="input-url" type="text" placeholder="Cor de Fundo da Pergunta" name="Pergunta" id="#questionColor">
+    <input class="input1" type="text" placeholder="Texto da Pergunta" name="Pergunta" id="questionText">
+    <input class="input-url" type="text" placeholder="Cor de Fundo da Pergunta" name="Pergunta" id="questionColor">
     <h2>Resposta Correta</h2>
-    <input class="input1" type="text" placeholder="Resposta Correta" name="Pergunta" id="#correctAnswer">
-    <input class="input-url" type="text" placeholder="URL da Imagem" name="Pergunta" id="#answerImageURL">
+    <input class="input1" type="text" placeholder="Resposta Correta" name="Pergunta" id="correctAnswer">
+    <input class="input-url" type="text" placeholder="URL da Imagem" name="Pergunta" id="answerImageURL">
     <h2>Respostas Incorretas</h2>
-    <input class="input1" type="text" placeholder="Resposta Incorreta1" name="Pergunta" id="#wrongAnswer1">
-    <input class="input-url" type="text" placeholder="URL da Imagem1" name="Pergunta" id="#answerImageURL">
+    <input class="input1" type="text" placeholder="Resposta Incorreta1" name="Pergunta" id="wrongAnswer1">
+    <input class="input-url" type="text" placeholder="URL da Imagem1" name="Pergunta" id="answerImageURL">
     <input class="input1" type="text" placeholder="Resposta Incorreta2" name="Pergunta" id="wrongAnswer2-3">
-    <input class="input-url" type="text" placeholder="URL da Imagem2" name="Pergunta" id="#answerImageURL">
+    <input class="input-url" type="text" placeholder="URL da Imagem2" name="Pergunta" id="answerImageURL">
     <input class="input1" type="text" placeholder="Resposta Incorreta3" name="Pergunta" id="wrongAnswer2-3">
-    <input class="input-url" type="text" placeholder="URL da Imagem3" name="Pergunta" id="#answerImageURL">
+    <input class="input-url" type="text" placeholder="URL da Imagem3" name="Pergunta" id="answerImageURL">
   </div>
 </div>
 </div>`
@@ -68,8 +68,14 @@ function numberRange(number, min, max) {
   return true
 }
 
+function isHexColor(string) {
+  let colorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/
+  if (colorRegex.test(string)) return true
+  return false
+}
+
 function isImage(ImageURL) {
-  let regex = /apng|avif|gif|jpeg|jpg|png|svg|webp|bmp|ico|tiff/
+  let regex = /apng|avif|gif|jpeg|jpg|png|svg|webp|bmp|ico|tiff/i
   if (regex.test(ImageURL)) return true
   return false
 }
@@ -88,16 +94,26 @@ function getBaseQuizzInfo() {
     return alert('Por favor preencha as informações corretamente')
   if (!numberRange(QuizzQuestionQtd, 3, null))
     return alert('Por favor preencha as informações corretamente')
-  if (!numberRange(QuizzLevelsQtd, 2, null))
+  if (!numberRange(QuizzLevelsQtd, 2, null)) {
     return alert('Por favor preencha as informações corretamente')
-  return true
+  }
+
+  renderQuestionCreation(QuizzQuestionQtd)
+
+  let quizzCreationScreen = document.querySelector('.quizz-creation')
+  let questionCreation = document.querySelector('.question-creation')
+
+  quizzCreationScreen.classList.add('hidden')
+  questionCreation.classList.remove('hidden')
+
+  return true;
 }
 
 function renderQuestionCreation(QuizzQuestionQtd) {
   QuizzQuestionQtd = parseInt(QuizzQuestionQtd)
   let questionPlace = document.querySelector(".all-question-container")
-  questionPlace.innerHTML =""
-  let aux =""
+  questionPlace.innerHTML = ""
+  let aux = ""
   for (let i = 1; i <= QuizzQuestionQtd; i++) {
     aux = questionHTML
     aux = aux.replace("QuestionNumber", i.toString())
@@ -105,12 +121,43 @@ function renderQuestionCreation(QuizzQuestionQtd) {
   }
 }
 
-function createLevels(){
-  let questionText = document.querySelectorAll("#questionText")
+function verifyLevelsInfo(QuizzQuestionQtd) {
+  let questionText = document.querySelectorAll('#questionText')
   let questionColor = document.querySelectorAll("#questionColor")
   let correctAnswer = document.querySelectorAll("#correctAnswer")
+  let wrongAnswer1 = document.querySelectorAll("#wrongAnswer1")
+  let wrongAnswer2 = document.querySelectorAll("#wrongAnswer2-3")
   let answerImageURL = document.querySelectorAll("#answerImageURL")
-    
+
+  console.log(questionText);
+  console.log(questionColor);
+  console.log(correctAnswer);
+  console.log(wrongAnswer1);
+  console.log(wrongAnswer2);
+  console.log(answerImageURL);
+
+  let indexWrongAnswer = 0;
+  let indexUrl = 0;
+
+  for (let i = 0; i < QuizzQuestionQtd; i++) {
+
+    if (!stringSize(questionText[i].value, 20, 100)) return alert('Por favor preencha as informações corretamente')
+    if (!isHexColor(questionColor[i].value)) return alert('Por favor preencha as informações corretamente')
+    if (correctAnswer[i].value === null || correctAnswer[i] === "") return alert('Por favor preencha as informações corretamente')
+    if (!isImage(answerImageURL[indexUrl].value)) return alert('Por favor preencha as informações corretamente')
+    indexUrl += 1
+    if (wrongAnswer1[i].value === null || wrongAnswer1[i].value === "") return alert('Por favor preencha as informações corretamente')
+    if (!isImage(answerImageURL[indexUrl].value)) return alert('Por favor preencha as informações corretamente')
+    indexUrl += 1
+    if (wrongAnswer2[indexWrongAnswer].value == null || wrongAnswer2[indexWrongAnswer].value == "") { }
+    else if (!isImage(answerImageURL[indexUrl].value)) return alert('Por favor preencha as informações corretamente')
+    indexUrl += 1
+    indexWrongAnswer += 1
+    if (wrongAnswer2[indexWrongAnswer].value == null || wrongAnswer2[indexWrongAnswer].value == "") { }
+    else if (!isImage(answerImageURL[indexUrl].value)) return alert('Por favor preencha as informações corretamente')
+    indexWrongAnswer += 1
+    indexUrl += 1
+  }
 }
 
 function renderQuizzCreationScreen() {
@@ -198,4 +245,3 @@ function renderSelectedQuizz(respostaComQuizz) {
   setTimeout(scrollToNextQuestion, 1000)
 }
 //Criar o render quitzz title, questions e scroll//
-
