@@ -1,6 +1,6 @@
 let arrayListaQuizzes = []
 let arrayDeQuizzes = []
-verifyIfExistDataStorage()
+//verifyIfExistDataStorage()
 let quantidadeDePerguntas
 let quizzEmQuestao
 let quantidadeDeNiveis
@@ -11,7 +11,30 @@ let quizzCriado = {
   levels: []
 }
 
-function verifyIfExistDataStorage() {
+let questionHTML = `<div class="question-info-container">
+<div class="area">
+  <div class="question-number">
+    <h2>Pergunta QuestionNumber</h2>
+    <ion-icon name="create-outline"></ion-icon>
+  </div>
+  <div class="question-form">
+    <input class="input1" type="text" placeholder="Texto da Pergunta" name="Pergunta" id="#questionText">
+    <input class="input-url" type="text" placeholder="Cor de Fundo da Pergunta" name="Pergunta" id="#questionColor">
+    <h2>Resposta Correta</h2>
+    <input class="input1" type="text" placeholder="Resposta Correta" name="Pergunta" id="#correctAnswer">
+    <input class="input-url" type="text" placeholder="URL da Imagem" name="Pergunta" id="#answerImageURL">
+    <h2>Respostas Incorretas</h2>
+    <input class="input1" type="text" placeholder="Resposta Incorreta1" name="Pergunta" id="#wrongAnswer1">
+    <input class="input-url" type="text" placeholder="URL da Imagem1" name="Pergunta" id="#answerImageURL">
+    <input class="input1" type="text" placeholder="Resposta Incorreta2" name="Pergunta" id="wrongAnswer2-3">
+    <input class="input-url" type="text" placeholder="URL da Imagem2" name="Pergunta" id="#answerImageURL">
+    <input class="input1" type="text" placeholder="Resposta Incorreta3" name="Pergunta" id="wrongAnswer2-3">
+    <input class="input-url" type="text" placeholder="URL da Imagem3" name="Pergunta" id="#answerImageURL">
+  </div>
+</div>
+</div>`
+
+function verificarSeExisteDataStorage() {
   if (
     JSON.parse(window.localStorage.getItem('User Quizzes')) === null ||
     JSON.parse(window.localStorage.getItem('User Quizzes')).length === 0
@@ -68,6 +91,25 @@ function getBaseQuizzInfo() {
   if (!numberRange(QuizzLevelsQtd, 2, null))
     return alert('Por favor preencha as informações corretamente')
   return true
+}
+
+function renderQuestionCreation(QuizzQuestionQtd) {
+  QuizzQuestionQtd = parseInt(QuizzQuestionQtd)
+  let questionPlace = document.querySelector('.all-question-container')
+  questionPlace.innerHTML = ''
+  let aux = ''
+  for (let i = 1; i <= QuizzQuestionQtd; i++) {
+    aux = questionHTML
+    aux = aux.replace('QuestionNumber', i.toString())
+    questionPlace.innerHTML += aux
+  }
+}
+
+function createLevels() {
+  let questionText = document.querySelectorAll('#questionText')
+  let questionColor = document.querySelectorAll('#questionColor')
+  let correctAnswer = document.querySelectorAll('#correctAnswer')
+  let answerImageURL = document.querySelectorAll('#answerImageURL')
 }
 
 function renderQuizzCreationScreen() {
