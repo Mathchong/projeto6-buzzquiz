@@ -286,6 +286,22 @@ header h1 {
 margin-bottom: 8px;
 }
 
+.level-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFFFFF;
+  width: 100vw;
+}
+
+.level-form input{
+  width: calc(100vw - 30px);
+  height: 46px;
+
+
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+}
 /*----Utilitarios----*/
 .hidden {
   display: none;

@@ -26,7 +26,7 @@ function verificarSeExisteDataStorage() {
 
 function renderQuizzCreationScreen() {
   document.querySelector('.screen-1-desktop').classList.add('hidden')
-  document.querySelector('.screen-3_1').classList.remove('hidden')
+  document.querySelector('.quizz-creation').classList.remove('hidden')
 }
 // Request de Quizzes
 requestQuizzes()

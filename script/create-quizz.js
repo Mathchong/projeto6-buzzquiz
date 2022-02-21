@@ -1,3 +1,4 @@
+let questionNumber = 0
 let questionHTML = `<div class="question-info-container">
 <div class="area">
   <div class="question-number">
@@ -5,18 +6,18 @@ let questionHTML = `<div class="question-info-container">
     <ion-icon name="create-outline"></ion-icon>
   </div>
   <div class="question-form">
-    <input class="input1" type="text" placeholder="Texto da Pergunta" name="Pergunta" id="#questionText">
-    <input class="input-url" type="text" placeholder="Cor de Fundo da Pergunta" name="Pergunta" id="#questionColor">
+    <input class="input1" type="text" placeholder="Texto da Pergunta" name="Pergunta" id="questionText">
+    <input class="input-url" type="text" placeholder="Cor de Fundo da Pergunta" name="Pergunta" id="questionColor">
     <h2>Resposta Correta</h2>
-    <input class="input1" type="text" placeholder="Resposta Correta" name="Pergunta" id="#correctAnswer">
-    <input class="input-url" type="text" placeholder="URL da Imagem" name="Pergunta" id="#answerImageURL">
+    <input class="input1" type="text" placeholder="Resposta Correta" name="Pergunta" id="correctAnswer">
+    <input class="input-url" type="text" placeholder="URL da Imagem" name="Pergunta" id="answerImageURL">
     <h2>Respostas Incorretas</h2>
-    <input class="input1" type="text" placeholder="Resposta Incorreta1" name="Pergunta" id="#wrongAnswer1">
-    <input class="input-url" type="text" placeholder="URL da Imagem1" name="Pergunta" id="#answerImageURL">
+    <input class="input1" type="text" placeholder="Resposta Incorreta1" name="Pergunta" id="wrongAnswer1">
+    <input class="input-url" type="text" placeholder="URL da Imagem1" name="Pergunta" id="answerImageURL">
     <input class="input1" type="text" placeholder="Resposta Incorreta2" name="Pergunta" id="wrongAnswer2-3">
-    <input class="input-url" type="text" placeholder="URL da Imagem2" name="Pergunta" id="#answerImageURL">
+    <input class="input-url" type="text" placeholder="URL da Imagem2" name="Pergunta" id="answerImageURL">
     <input class="input1" type="text" placeholder="Resposta Incorreta3" name="Pergunta" id="wrongAnswer2-3">
-    <input class="input-url" type="text" placeholder="URL da Imagem3" name="Pergunta" id="#answerImageURL">
+    <input class="input-url" type="text" placeholder="URL da Imagem3" name="Pergunta" id="answerImageURL">
   </div>
 </div>
 </div>`
@@ -71,7 +72,7 @@ function getBaseQuizzInfo() {
   if (!numberRange(QuizzLevelsQtd, 2, null)) {
     return alert('Por favor preencha as informações corretamente')
   }
-
+  questionNumber = QuizzQuestionQtd
   renderQuestionCreation(QuizzQuestionQtd)
 
   let quizzCreationScreen = document.querySelector('.quizz-creation')
@@ -95,7 +96,7 @@ function renderQuestionCreation(QuizzQuestionQtd) {
   }
 }
 
-function verifyLevelsInfo(QuizzQuestionQtd) {
+function verifyLevelsInfo() {
   let questionText = document.querySelectorAll('#questionText')
   let questionColor = document.querySelectorAll("#questionColor")
   let correctAnswer = document.querySelectorAll("#correctAnswer")
@@ -113,9 +114,9 @@ function verifyLevelsInfo(QuizzQuestionQtd) {
   let indexWrongAnswer = 0;
   let indexUrl = 0;
 
-  for (let i = 0; i < QuizzQuestionQtd; i++) {
+  for (let i = 0; i < questionNumber; i++) {
 
-    if (!stringSize(questionText[i].value, 20, 100)) return alert('Por favor preencha as informações corretamente')
+    if (!stringSize(questionText[i].value,20,100)) return alert('Por favor preencha as informações corretamente')
     if (!isHexColor(questionColor[i].value)) return alert('Por favor preencha as informações corretamente')
     if (correctAnswer[i].value === null || correctAnswer[i] === "") return alert('Por favor preencha as informações corretamente')
     if (!isImage(answerImageURL[indexUrl].value)) return alert('Por favor preencha as informações corretamente')
@@ -132,4 +133,9 @@ function verifyLevelsInfo(QuizzQuestionQtd) {
     indexWrongAnswer += 1
     indexUrl += 1
   }
+
+  let levelCrationScreen = document.querySelector(".level-creation")
+  levelCrationScreen.classList.remove("hidden")
+  let questionCreation = document.querySelector('.question-creation')
+  questionCreation.classList.add('hidden')
 }

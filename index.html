@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style/style.css" />
-    <title>BuzzQuizz</title>
-  </head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="./style/style.css" />
+<title>BuzzQuizz</title>
+</head>
 
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./style/style.css" />
-  <title>Buzz Quizz</title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="./style/style.css" />
+<title>Buzz Quizz</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     <h1>BuzzQuizz</h1>
   </header>
   <!--Tela 1 com botão para ir para a tela 3-->
-  <div class="screen-1-desktop">
+  <div class="screen-1-desktop hidden">
     <div class="create-quizz">
       <p>Você ainda não criou nenhum quizz :(</p>
       <button onclick="renderQuizzCreationScreen()">Criar Quizz</button>
@@ -66,27 +66,9 @@
     <div class="all-question-container">
       <!--Will be loaded by JS-->
     </div>
-    <button class="red-button" onclick="createLevels()">
+    <button class="red-button" onclick="verifyLevelsInfo()">
       <p>Prosseguir pra criar níveis</p>
     </button>
-  </div>
-
-  <div class="level-creation content-container hidden">
-    <div class="area">
-      <div class="title">
-        <h2>Agora, decida os níveis!</h2>
-      </div>
-      <div class="all-levels-container">
-        <div>
-          <h2>Nível 1</h2>
-        </div>
-        
-        <div class="level-form">
-
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <script src="./script/script.js"></script>
