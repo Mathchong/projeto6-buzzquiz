@@ -378,11 +378,11 @@ h4 {
   border-radius: 5px;
 }
 
-.red-button {
+.red-button{
   width: calc(100vw - 30px);
   height: 54px;
   border-radius: 15px;
-  background-color: var(--main-color);
+  background-color: #ec362d;
   margin-top: 29px;
   margin-bottom: 60px;
 

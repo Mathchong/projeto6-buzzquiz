@@ -22,8 +22,6 @@ let questionHTML = `<div class="question-info-container">
 </div>
 </div>`
 
-BUZZ_QUIZZ_API = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes'
-
 function stringSize(string, min, max) {
   if (string === null) return false
   if (string.length < min || string.length > max) return false

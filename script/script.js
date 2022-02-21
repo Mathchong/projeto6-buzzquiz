@@ -7,7 +7,7 @@ let count = 0
 let acertos = 0
 let niveis = []
 let qtdDePerguntas = null
-
+let editandoQuizz = ""
 requestQuizzes()
 
 function requestQuizzes() {
@@ -281,12 +281,12 @@ function resetLevelVariables() {
 }
 
 function renderLoadingScreen() {
-  const carregando = document.querySelector('.carregando')
+  const carregando = document.querySelector('.loading')
   carregando.classList.remove('hidden')
 }
 
 function disableLoadingScreen() {
-  const carregando = document.querySelector('.carregando')
+  const carregando = document.querySelector('.loading')
   carregando.classList.add('hidden')
 }
 
